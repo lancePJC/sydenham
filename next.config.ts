@@ -4,7 +4,8 @@ const nextConfig = {
   },
   output: 'export',
   images: { unoptimized: true },
-  basePath: '/sydenham', // Replace with your repo name
+  basePath: '/sydenham', // Replace with your repo name if needed
 };
 
-export default nextConfig;
+// CommonJS export is required
+module.exports = nextConfig;

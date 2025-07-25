@@ -2,12 +2,13 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "export": "next export",
-    "deploy": "npm run build && npm run export"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "next start",
+  "export": "echo 'Skipping next export because output: export is already set'",
+  "deploy": "next build"
+},
   "dependencies": {
     "next": "15.3.5",
     "react": "^19.0.0",
