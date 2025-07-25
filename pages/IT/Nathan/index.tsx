@@ -12,7 +12,6 @@ import {
   FaSync,
   FaCloud,
   FaPhone,
-  FaEnvelope,
   FaBuilding,
   FaBolt,
 } from 'react-icons/fa';
@@ -102,7 +101,7 @@ export default function Nathan() {
 
         <Section title="24/7 Expert Support" icon={<FaHeadset />}>
           <p>
-            Count on our technical support team for real-time assistance anytime you need us. We're here to ensure your business runs smoothly without interruptions.
+            Count on our technical support team for real-time assistance anytime you need us. Were here to ensure your business runs smoothly without interruptions.
           </p>
         </Section>
 

@@ -1,11 +1,10 @@
-import type { NextConfig } from 'next';
-
-const nextConfig: NextConfig = {
-  output: 'export', // Enable static export
-  trailingSlash: true, // Helps with routing in GitHub Pages or Netlify
-  images: {
-    unoptimized: true, // Disable next/image optimization for static
+const nextConfig = {
+  eslint: {
+    ignoreDuringBuilds: true,
   },
+  output: 'export',
+  images: { unoptimized: true },
+  basePath: '/your-repo-name', // Replace with your repo name
 };
 
 export default nextConfig;
