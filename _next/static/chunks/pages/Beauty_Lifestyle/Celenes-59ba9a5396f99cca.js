@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[592],{2506:(e,_,s)=>{"use strict";s.r(_),s.d(_,{default:()=>u});var n=s(7876);s(4232);let u=()=>(0,n.jsx)("div",{children:"Celenes"})},2659:(e,_,s)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/Beauty_Lifestyle/Celenes",function(){return s(2506)}])}},e=>{var _=_=>e(e.s=_);e.O(0,[636,593,792],()=>_(2659)),_N_E=e.O()}]);

@@ -1,0 +1,1 @@
+(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[901],{7169:(_,e,n)=>{(window.__NEXT_P=window.__NEXT_P||[]).push(["/Sydenham_Power/Installations",function(){return n(9791)}])},9791:(_,e,n)=>{"use strict";n.r(e),n.d(e,{default:()=>a});var s=n(7876);n(4232);let a=()=>(0,s.jsx)("div",{children:"index"})}},_=>{var e=e=>_(_.s=e);_.O(0,[636,593,792],()=>e(7169)),_N_E=_.O()}]);
