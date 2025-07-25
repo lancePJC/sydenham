@@ -1,11 +1,8 @@
 const nextConfig = {
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
+  eslint: { ignoreDuringBuilds: true },
   output: 'export',
   images: { unoptimized: true },
-  basePath: '/sydenham', // Replace with your repo name if needed
+  basePath: '/sydenham', // this is your repo name
+  assetPrefix: '/sydenham', // <-- this is the key
 };
-
-// CommonJS export is required
-module.exports = nextConfig;
+export default nextConfig;
