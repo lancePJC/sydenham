@@ -2,12 +2,12 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
+ "scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "export": "next export",
+  "deploy": "npm run build && npm run export"
+},
   "dependencies": {
     "next": "15.3.5",
     "react": "^19.0.0",
