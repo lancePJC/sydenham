@@ -1,10 +1,13 @@
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
   output: 'export',
   images: { unoptimized: true },
-  basePath: '/sydenham', // Replace with your repo name
+  basePath: isProd ? '/sydenham' : '',
+  assetPrefix: isProd ? '/sydenham/' : '',
 };
 
 export default nextConfig;
