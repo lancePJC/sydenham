@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://lancepjc.github.io/sydenham
+
+# Sitemaps
+Sitemap: https://lancepjc.github.io/sydenham/sitemap.xml
