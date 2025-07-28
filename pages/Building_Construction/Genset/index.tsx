@@ -5,7 +5,7 @@ import Image from "next/image";
 import ff110w from '/public/images/gensets/ff110w.jpg';
 import ry7 from '/public/images/gensets/ry7.jpg';
 import gta251 from '/public/images/gensets/gta251.jpg';
-import overview from '/pubhalic/images/gensets/overview.png';
+import overview from '/public/images/gensets/overview.png';
 
 // ------- DATA ----------------------------------
 const models = [
