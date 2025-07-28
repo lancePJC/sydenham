@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { products } from '@/data/products';
+import { products } from '@/data/coffee';
 
 export default function Coffee() {
   const handleAdd = (p: (typeof products)[number]) => {
