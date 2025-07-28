@@ -1,6 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { skincareItems, SkincareItem } from '@/data/skincare'; 
+import { skincareItems, SkincareItem } from '@/data/skincare';
 
 const SomeByMiPage: React.FC = () => {
   const someByMiProducts = skincareItems.filter((item) => item.code.startsWith('SBM-'));
@@ -26,7 +28,7 @@ const SomeByMiPage: React.FC = () => {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Some By Mi Products</h1>
+      <h1 className="text-3xl font-bold mb-6 text-yellow-500">Some By Mi Products</h1>
       {someByMiProducts.length === 0 ? (
         <p className="text-gray-600">No Some By Mi products available.</p>
       ) : (
@@ -38,6 +40,7 @@ const SomeByMiPage: React.FC = () => {
                 key={item.id}
                 className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow"
               >
+                {/* Image Carousel */}
                 <div className="relative w-full h-64 mb-4">
                   <Image
                     src={item.images[currentImageIndex] || '/images/skincare/placeholder.jpg'}
@@ -61,25 +64,29 @@ const SomeByMiPage: React.FC = () => {
                   >
                     &gt;
                   </button>
+                  {/* Indicator Dots */}
                   <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {item.images.map((_, index) => (
                       <span
                         key={index}
                         className={`w-2 h-2 rounded-full ${
-                          index === currentImageIndex ? 'bg-blue-600' : 'bg-gray-400'
+                          index === currentImageIndex ? 'bg-yellow-500' : 'bg-gray-400'
                         }`}
                       ></span>
                     ))}
                   </div>
                 </div>
+
                 <h2 className="text-xl font-semibold">{item.name}</h2>
                 <p className="text-gray-600">{item.desc}</p>
-                <p className="text-lg font-bold mt-2">KES {item.wholesale}</p>
+                <p className="text-lg font-bold mt-2 text-yellow-600">
+                  KES {item.wholesale.toLocaleString()}
+                </p>
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
                   onClick={() => handleAddToCart(item)}
-                  className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                  className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart
                 </button>

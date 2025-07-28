@@ -193,7 +193,7 @@ export default function Footer() {
 
         {/* WHATSAPP FLOATING CHAT BUTTON */}
         <a
-          href="https://wa.me/254700000000?text=Hello%20Sydenham%20Team%2C%20I%20need%20help"
+          href="https://wa.me/254724892006?text=Hello%20Sydenham%20Team%2C%20I%20need%20help"
           target="_blank"
           className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg flex items-center gap-2 text-sm"
         >

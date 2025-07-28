@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { skincareItems, SkincareItem } from '@/data/skincare'; // Adjust path as needed
@@ -21,14 +23,13 @@ const BentonPage: React.FC = () => {
   };
 
   const handleAddToCart = (item: SkincareItem) => {
-    // Placeholder for cart functionality
     alert(`Added ${item.name} to cart!`);
-    // Implement cart logic here (e.g., context, localStorage, or API call)
+    // Replace with real cart logic
   };
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-6">Benton Products</h1>
+      <h1 className="text-3xl font-bold mb-6 text-yellow-500">Benton Products</h1>
       {bentonProducts.length === 0 ? (
         <p className="text-gray-600">No Benton products available.</p>
       ) : (
@@ -71,20 +72,23 @@ const BentonPage: React.FC = () => {
                       <span
                         key={index}
                         className={`w-2 h-2 rounded-full ${
-                          index === currentImageIndex ? 'bg-blue-600' : 'bg-gray-400'
+                          index === currentImageIndex ? 'bg-yellow-500' : 'bg-gray-400'
                         }`}
                       ></span>
                     ))}
                   </div>
                 </div>
+
                 <h2 className="text-xl font-semibold">{item.name}</h2>
                 <p className="text-gray-600">{item.desc}</p>
-                <p className="text-lg font-bold mt-2">KES {item.wholesale}</p>
+                <p className="text-lg font-bold mt-2 text-yellow-600">
+                  KES {item.wholesale.toLocaleString()}
+                </p>
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
                   onClick={() => handleAddToCart(item)}
-                  className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                  className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart
                 </button>

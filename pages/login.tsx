@@ -7,7 +7,7 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <form className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
-        <h1 className="text-3xl font-extrabold text-center text-orange-600 mb-6">
+        <h1 className="text-3xl font-extrabold text-center text-yellow-600 mb-6">
           Login
         </h1>
 
@@ -25,7 +25,7 @@ export default function LoginPage() {
           <label className="block mb-2 text-sm font-medium text-gray-700">Email</label>
           <input
             type="email"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
             placeholder="Enter your email"
           />
         </div>
@@ -35,7 +35,7 @@ export default function LoginPage() {
           <label className="block mb-2 text-sm font-medium text-gray-700">Password</label>
           <input
             type="password"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
             placeholder="Enter your password"
           />
         </div>
@@ -43,7 +43,7 @@ export default function LoginPage() {
         {/* Login Button */}
         <button
           type="submit"
-          className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600 transition"
+          className="w-full bg-yellow-500 text-white p-3 rounded-lg hover:bg-yellow-600 transition"
         >
           Login
         </button>
@@ -51,7 +51,7 @@ export default function LoginPage() {
         {/* Optional Link to Sign Up */}
         <p className="text-center text-sm text-gray-600 mt-6">
           Don’t have an account?{' '}
-          <Link href="/signup" className="text-orange-500 hover:underline">
+          <Link href="/signup" className="text-yellow-500 hover:underline">
             Sign up
           </Link>
         </p>

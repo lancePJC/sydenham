@@ -66,7 +66,7 @@ const PyunkangYulPage: React.FC = () => {
                       <span
                         key={index}
                         className={`w-2 h-2 rounded-full ${
-                          index === currentImageIndex ? 'bg-blue-600' : 'bg-gray-400'
+                          index === currentImageIndex ? 'bg-yellow-500' : 'bg-gray-400'
                         }`}
                       ></span>
                     ))}
@@ -79,7 +79,7 @@ const PyunkangYulPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
                   onClick={() => handleAddToCart(item)}
-                  className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                  className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart
                 </button>

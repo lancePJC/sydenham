@@ -7,7 +7,7 @@ export default function SignupPage() {
   return (
     <div className="min-h-screen bg-white flex items-center justify-center px-4">
       <form className="w-full max-w-md bg-white p-8 rounded-2xl shadow-xl border border-gray-200">
-        <h1 className="text-3xl font-extrabold text-center text-orange-600 mb-6">
+        <h1 className="text-3xl font-extrabold text-center text-yellow-600 mb-6">
           Sign Up
         </h1>
 
@@ -25,7 +25,7 @@ export default function SignupPage() {
           <label className="block mb-2 text-sm font-medium text-gray-700">Email</label>
           <input
             type="email"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
             placeholder="Enter your email"
           />
         </div>
@@ -35,7 +35,7 @@ export default function SignupPage() {
           <label className="block mb-2 text-sm font-medium text-gray-700">Password</label>
           <input
             type="password"
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400"
             placeholder="Enter your password"
           />
         </div>
@@ -45,7 +45,7 @@ export default function SignupPage() {
           <input type="checkbox" className="mt-1" required />
           <label>
             I agree to the{' '}
-            <a href="#" className="text-orange-500 hover:underline">
+            <a href="#" className="text-yellow-500 hover:underline">
               Terms & Conditions
             </a>
           </label>
@@ -54,7 +54,7 @@ export default function SignupPage() {
         {/* Sign Up Button */}
         <button
           type="submit"
-          className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600 transition"
+          className="w-full bg-yellow-500 text-white p-3 rounded-lg hover:bg-yellow-600 transition"
         >
           Sign Up
         </button>
@@ -62,7 +62,7 @@ export default function SignupPage() {
         {/* Link to Login */}
         <p className="text-center text-sm text-gray-600 mt-6">
           Already have an account?{' '}
-          <Link href="/login" className="text-orange-500 hover:underline">
+          <Link href="/login" className="text-yellow-500 hover:underline">
             Log in
           </Link>
         </p>
