@@ -1,3 +1,5 @@
+import { StaticImageData } from 'next/image';
+
 // import Coffee1 from '/public/images/Coffee/Coffee1.jpg';
 // import Coffee2 from '/public/images/Coffee/Coffee2.jpg';
 // import Coffee3 from '/public/images/Coffee/Coffee3.jpg';
