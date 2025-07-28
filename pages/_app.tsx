@@ -14,6 +14,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>Sydenham Enterprises</title>
         <meta name="description" content="Official Sydenham Enterprises website" />
+        <meta name="google-site-verification" content="abc123XYZ" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
  
