@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Evoluderm = () => {
+const index = () => {
   return (
     <div>Evoludrem Page Only</div>
   )
 }
 
-export default Evoluderm
+export default index

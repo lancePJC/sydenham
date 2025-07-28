@@ -1,51 +1,100 @@
-'use client';
-
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
-import { skincareItems } from '@/data/skincare';
+import { skincareItems, SkincareItem } from '@/data/skincare'; // Adjust path as needed
 
-export default function Benton() {
-  const bentonItems = skincareItems.filter(item => item.code.startsWith('BENTON-'));
+const BentonPage: React.FC = () => {
+  const bentonProducts = skincareItems.filter((item) => item.code.startsWith('BENTON-'));
+  const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
 
-  const handleAdd = (item: (typeof skincareItems)[number]) => {
-    // Integrate with your cart logic here
-    console.log('Added to cart:', item.name);
+  const handleNextImage = (itemId: number, totalImages: number) => {
+    setCurrentImageIndices((prev) => ({
+      ...prev,
+      [itemId]: ((prev[itemId] || 0) + 1) % totalImages,
+    }));
+  };
+
+  const handlePrevImage = (itemId: number, totalImages: number) => {
+    setCurrentImageIndices((prev) => ({
+      ...prev,
+      [itemId]: ((prev[itemId] || 0) - 1 + totalImages) % totalImages,
+    }));
+  };
+
+  const handleAddToCart = (item: SkincareItem) => {
+    // Placeholder for cart functionality
+    alert(`Added ${item.name} to cart!`);
+    // Implement cart logic here (e.g., context, localStorage, or API call)
   };
 
   return (
-    <div className="grid gap-6 md:grid-cols-3">
-      {bentonItems.map((item) => (
-        <div
-          key={item.id}
-          className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200"
-        >
-          <Image
-            src={item.images[0]}
-            alt={item.name}
-            width={400}
-            height={160}
-            className="w-full h-40 object-cover rounded-md mb-3"
-          />
-          <h3 className="text-lg font-semibold text-gray-800 mb-1">
-            {item.name}
-          </h3>
-          <p className="text-sm text-gray-600 mb-2">
-            {item.desc}
-          </p>
-          <p className="text-sm text-gray-600 mb-3">
-            Wholesale:{' '}
-            <span className="font-medium text-yellow-500">
-              KES {item.wholesale}
-            </span>
-          </p>
-          <button
-            onClick={() => handleAdd(item)}
-            className="w-full bg-black text-white p-2 rounded hover:bg-yellow-600 transition"
-          >
-            Add to Cart
-          </button>
+    <div className="container mx-auto py-8">
+      <h1 className="text-3xl font-bold mb-6">Benton Products</h1>
+      {bentonProducts.length === 0 ? (
+        <p className="text-gray-600">No Benton products available.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          {bentonProducts.map((item: SkincareItem) => {
+            const currentImageIndex = currentImageIndices[item.id] || 0;
+            return (
+              <div
+                key={item.id}
+                className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow"
+              >
+                {/* Carousel */}
+                <div className="relative w-full h-64 mb-4">
+                  <Image
+                    src={item.images[currentImageIndex] || '/images/skincare/placeholder.jpg'}
+                    alt={item.name}
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    className="rounded"
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/skincare/placeholder.jpg';
+                    }}
+                  />
+                  {/* Navigation Buttons */}
+                  <button
+                    onClick={() => handlePrevImage(item.id, item.images.length)}
+                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
+                  >
+                    &lt;
+                  </button>
+                  <button
+                    onClick={() => handleNextImage(item.id, item.images.length)}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
+                  >
+                    &gt;
+                  </button>
+                  {/* Image Indicators */}
+                  <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {item.images.map((_, index) => (
+                      <span
+                        key={index}
+                        className={`w-2 h-2 rounded-full ${
+                          index === currentImageIndex ? 'bg-blue-600' : 'bg-gray-400'
+                        }`}
+                      ></span>
+                    ))}
+                  </div>
+                </div>
+                <h2 className="text-xl font-semibold">{item.name}</h2>
+                <p className="text-gray-600">{item.desc}</p>
+                <p className="text-lg font-bold mt-2">KES {item.wholesale}</p>
+                <p className="text-sm text-gray-500">Category: {item.category}</p>
+                <p className="text-sm text-gray-500">Code: {item.code}</p>
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+                >
+                  Add to Cart
+                </button>
+              </div>
+            );
+          })}
         </div>
-      ))}
+      )}
     </div>
   );
-}
+};
+
+export default BentonPage;

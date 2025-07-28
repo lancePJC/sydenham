@@ -1,9 +1,11 @@
-import SydenhamSkincare from '@/components/SydenhamSkinCare'
+import SkincareProducts from '@/components/SkincareProducts'
 import React from 'react'
 
 const index = () => {
   return (
-    <div><SydenhamSkincare/></div>
+  <>
+          <SkincareProducts/>
+  </>
   )
 }
 
