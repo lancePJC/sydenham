@@ -4,36 +4,44 @@ import Slider from 'react-slick';
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+import construction from '/public/images/construction.jpg';
+import it from '/public/images/it.jpg';
+import beauty from '/public/images/beauty.jpg';
+import beverages from '/public/images/beverages.jpg';
+import power from '/public/images/power.jpg';
+
+
 const categories = [
   {
     name: 'Construction',
     link: '/Building_Construction',
     branches: ['Lifts', 'Genset', 'Escalators', 'Mechanical Engineering'],
-    image: '/images/construction.jpg',
+    image: construction,
   },
   {
     name: 'IT',
     link: '/IT',
     branches: ['Nathan', 'Digital Tech', 'RAMCO'],
-    image: '/images/it.jpg',
+    image: it,
   },
   {
     name: 'Beauty & Lifestyle',
     link: '/Beauty_Lifestyle',
     branches: ['BENTON', 'Phukang Yul', 'Cosrx', 'Purito'],
-    image: '/images/beauty.jpg',
+    image: beauty,
   },
   {
     name: 'Beverages',
     link: '/Beverages',
     branches: ['Tamu Tea', 'Tamu Coffee'],
-    image: '/images/beverages.jpg',
+    image: beverages,
   },
   {
     name: 'Sydenham Power',
     link: '/Sydenham_Power',
     branches: ['Solar Lamp', 'Street Lights', 'Solar Fridge'],
-    image: '/images/power.jpg',
+    image: power,
   },
 ];
 

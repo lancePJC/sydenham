@@ -1,12 +1,23 @@
 'use client';
 
 import Image from 'next/image';
+import road1 from '/public/images/roads/road1.jpg';
+import road2 from '/public/images/roads/road2.jpg';
+import road3 from '/public/images/roads/road3.jpg';
+import road4 from '/public/images/roads/road4.jpg';
+import road5 from '/public/images/roads/road5.jpg';
+import road6 from '/public/images/roads/road6.jpg';
+import road7 from '/public/images/roads/road7.jpg';
+import road8 from '/public/images/roads/road8.jpg';
+import road9 from '/public/images/roads/road9.jpg';
+
+import type { StaticImageData } from 'next/image';
 
 type RoadProject = {
   name: string;
   desc: string;
   bullets: string[];
-  image: string;
+  image: StaticImageData;
   alt: string;
 };
 
@@ -15,63 +26,63 @@ const roads: RoadProject[] = [
     name: 'Urban Road Upgrade – CBD Link',
     desc: 'Paving and expanding congested urban roads with drainage and pedestrian paths.',
     bullets: ['Length: 6.4 km', 'Asphalt overlay', 'Storm water channels', 'Smart street lighting'],
-    image: '/images/roads/road1.jpg',
+    image: road1,
     alt: 'Urban Road Project',
   },
   {
     name: 'Highway Expansion – Mombasa Express',
     desc: 'Dual carriage highway with emergency lanes, signage, and service roads.',
     bullets: ['Length: 38 km', 'Dual lanes each side', 'ISO-certified QA', 'Completed in 2023'],
-    image: '/images/roads/road2.jpg',
+    image: road2,
     alt: 'Highway Construction',
   },
   {
     name: 'Rural Access Road – Kiambu Phase II',
     desc: 'Improving rural mobility through all-weather roads connecting villages.',
     bullets: ['Length: 12.5 km', 'Gravel stabilization', 'Culverts & drainage', 'Cost-effective design'],
-    image: '/images/roads/road3.jpg',
+    image: road3,
     alt: 'Rural Access Road',
   },
   {
     name: 'Industrial Zone Roads – Athi River',
     desc: 'Heavy-duty roads within industrial parks for logistics and transport efficiency.',
     bullets: ['Thickness: 250 mm concrete', 'Truck-friendly', 'Long-lasting mix', 'Low maintenance'],
-    image: '/images/roads/road4.jpg',
+    image: road4,
     alt: 'Industrial Roads',
   },
   {
     name: 'Bridge Approach Roads – Tana River',
     desc: 'Approach roads leading to newly constructed reinforced concrete bridges.',
     bullets: ['Road length: 3.2 km', 'Guard rails included', 'Smooth grade transitions', 'Flood resistant'],
-    image: '/images/roads/road5.jpg',
+    image: road5,
     alt: 'Bridge Approach Road',
   },
   {
     name: 'Airport Access Road – JKIA East Wing',
     desc: 'Direct, well-lit road connecting terminals to parking and logistics hubs.',
     bullets: ['Access control', 'High-reflective signage', 'Drainage slope design', 'Night operation enabled'],
-    image: '/images/roads/road6.jpg',
+    image: road6,
     alt: 'Airport Access Road',
   },
   {
     name: 'Estate Internal Roads – Sydenham Heights',
     desc: 'Internal paved roads with landscaping, speed bumps, and curb stones.',
     bullets: ['Interlocking blocks', 'Integrated drainage', 'Pedestrian zones', 'Eco-sensitive design'],
-    image: '/images/roads/road7.jpg',
+    image: road7,
     alt: 'Estate Roads',
   },
   {
     name: 'Feeder Road – Tharaka Catchment',
     desc: 'Connecting farms to main roads for agricultural produce transport.',
     bullets: ['Length: 8.2 km', 'Double surface dressing', 'Rural reinforcement mesh', 'Low-cost method'],
-    image: '/images/roads/road8.jpg',
+    image: road8,
     alt: 'Feeder Road',
   },
   {
     name: 'Bypass Road – Nairobi Western Loop',
     desc: 'Designed to decongest city center and redirect heavy traffic.',
     bullets: ['Dual-lane bypass', 'Noise barriers', 'Emergency lanes', 'Funded via PPP'],
-    image: '/images/roads/road9.jpg',
+    image: road9,
     alt: 'Bypass Road',
   },
 ];
@@ -87,15 +98,12 @@ export default function RoadConstruction() {
         </p>
       </section>
 
-      {/* Roads Map */}
+      {/* Road Sections */}
       {roads.map((road, i) => (
         <section
           key={road.name}
-          className={`flex flex-col gap-10 lg:gap-16 lg:flex-row ${
-            i % 2 === 1 ? 'lg:flex-row-reverse' : ''
-          }`}
+          className={`flex flex-col gap-10 lg:gap-16 lg:flex-row ${i % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}
         >
-          {/* Image */}
           <div className="lg:w-1/2">
             <Image
               src={road.image}
@@ -106,54 +114,39 @@ export default function RoadConstruction() {
               priority={i === 0}
             />
           </div>
-
-          {/* Text */}
           <div className="lg:w-1/2 self-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold text-yellow-400">{road.name}</h2>
             <p className="text-lg text-gray-700">{road.desc}</p>
-
             <ul className="list-disc list-inside space-y-1 text-gray-700 mt-2">
               {road.bullets.map((b) => (
                 <li key={b}>{b}</li>
               ))}
             </ul>
           </div>
-          {/* Video Showcase Section */}
-<section className="max-w-5xl mx-auto space-y-10 text-center">
-  <h2 className="text-3xl md:text-4xl font-bold text-yellow-500">Road Construction In Action</h2>
-  <p className="text-gray-600 text-lg">
-    Real footage from our on-site road projects across Kenya — from paving to heavy equipment in motion.
-  </p>
-
-  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-    <div className="rounded-xl overflow-hidden shadow-lg">
-      <video
-        src="/images/roads/video1.mp4"
-        controls
-        className="w-full h-auto rounded-lg"
-      >
-        Your browser does not support the video tag.
-      </video>
-      <p className="mt-2 text-sm text-gray-600">Urban paving with storm drainage installation</p>
-    </div>
-
-    <div className="rounded-xl overflow-hidden shadow-lg">
-      <video
-        src="/images/roads/video2.mp4"
-        controls
-        className="w-full h-auto rounded-lg"
-      >
-        Your browser does not support the video tag.
-      </video>
-      <p className="mt-2 text-sm text-gray-600">Earthworks and grading on rural access roads</p>
-    </div>
-  </div>
-</section>
-
         </section>
       ))}
 
-      {/* Closing */}
+      {/* Video Section */}
+      <section className="max-w-5xl mx-auto space-y-10 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-yellow-500">Road Construction In Action</h2>
+        <p className="text-gray-600 text-lg">
+          Real footage from our on-site road projects across Kenya — from paving to heavy equipment in motion.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+          <div className="rounded-xl overflow-hidden shadow-lg">
+            <video src="/images/roads/video1.mp4" controls className="w-full h-auto rounded-lg" />
+            <p className="mt-2 text-sm text-gray-600">Urban paving with storm drainage installation</p>
+          </div>
+
+          <div className="rounded-xl overflow-hidden shadow-lg">
+            <video src="/images/roads/video2.mp4" controls className="w-full h-auto rounded-lg" />
+            <p className="mt-2 text-sm text-gray-600">Earthworks and grading on rural access roads</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
       <footer className="text-center space-y-3 mt-24">
         <h2 className="text-2xl font-bold text-yellow-400">Sydenham Construction Ltd</h2>
         <p className="text-gray-600 text-lg">— Building roads that build futures.</p>

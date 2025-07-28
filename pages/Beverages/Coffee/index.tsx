@@ -17,14 +17,13 @@ export default function Coffee() {
           key={product.id}
           className="bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-shadow border border-gray-200"
         >
-          <Image
-            src={`/images/${product.type}-${product.id}.jpg`}
-            alt={product.name}
-            width={400}
-            height={160}
-            className="w-full h-40 object-cover rounded-md mb-3"
-          />
-
+        <Image
+         src={product.images[0]}
+         alt={product.name}
+         width={400}
+         height={160}
+         className="w-full h-40 object-cover rounded-md mb-3"
+/>
           <h3 className="text-lg font-semibold text-gray-800 mb-1">
             {product.name}
           </h3>

@@ -1,6 +1,11 @@
-// app/gensets/page.tsx
 "use client";
 import Image from "next/image";
+
+// ---- Image Imports ----
+import ff110w from '/public/images/gensets/ff110w.jpg';
+import ry7 from '/public/images/gensets/ry7.jpg';
+import gta251 from '/public/images/gensets/gta251.jpg';
+import overview from '/pubhalic/images/gensets/overview.png';
 
 // ------- DATA ----------------------------------
 const models = [
@@ -13,7 +18,7 @@ const models = [
       "0.8 power‑factor • 50 Hz • 415 / 240 V 3‑phase",
       "Noise level 77 dB(A) @ 1 m",
     ],
-    img: "/images/gensets/ff110w.jpg",
+    img: ff110w,
   },
   {
     name: "RY7‑4L In‑Line 4 Engine",
@@ -23,7 +28,7 @@ const models = [
       "Electronic governor • 17.5 : 1 compression",
       "Cooling capacity 30 L • Oil capacity 17 L",
     ],
-    img: "/images/gensets/ry7.jpg",
+    img: ry7,
   },
   {
     name: "GTA‑251AIHD Alternator",
@@ -33,7 +38,7 @@ const models = [
       "Insulation class H • IP 23",
       "Star connection • 0.8 PF • 415 / 240 V",
     ],
-    img: "/images/gensets/gta251.jpg",
+    img: gta251,
   },
 ];
 
@@ -112,17 +117,17 @@ export default function GensetPage() {
           based on the power requirements of the connected devices and the type of power sources involved. Some ATS units include monitoring features,
           allowing users to track power status, load levels, and other relevant data. All FMT Group generators have the ATS system.
         </p>
-        {/* Overview Image */}
-    <div className="max-w-6xl mx-auto">
-   <Image
-    src="/images/gensets/overview.png"
-    alt="Sydenham Gensets Overview"
-    width={1200}
-    height={800}
-    className="rounded-2xl shadow-xl my-12"
-  />
-</div>
 
+        {/* Overview Image */}
+        <div className="max-w-6xl mx-auto">
+          <Image
+            src={overview}
+            alt="Sydenham Gensets Overview"
+            width={1200}
+            height={800}
+            className="rounded-2xl shadow-xl my-12"
+          />
+        </div>
       </section>
 
       {/* CTA */}

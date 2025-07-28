@@ -47,8 +47,8 @@ const sections: Section[] = [
       'Everyone deserves confidence, care, and wellness. Our division brings global skincare and wellness products directly to your doorstep, including iconic brands such as:',
     ],
     bullets: [
-      'BENTON, Pyunkang Yul, COSRX, PURITO',
-      'CELENES, EVOLUDERM, SINOZ, PRETTY SKIN',
+      'Benton, Pyunkang Yul, Cosrx, Purito',
+      'Celens, Evoluderm, Sinoz, Pretty Skin',
     ],
     image: beauty,
     alt: 'Beauty',
