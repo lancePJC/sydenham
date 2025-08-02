@@ -1,6 +1,19 @@
 import { useCart } from '@/components/context/CartContext';
 import Image from 'next/image';
-import { skincareItems } from '@/data/skincare'; // <-- Correct import
+import { skincareItems } from '@/data/skincare';
+
+function skincareItemToProduct(item: SkincareItem): Product {
+  return {
+    id: item.id,
+    code: item.code,
+    name: item.name,
+    desc: item.desc,
+    retail: item.wholesale, // or set a real retail price if you want
+    wholesale: item.wholesale,
+    type: item.category,    // or 'skincare'
+    images: item.images,
+  };
+}
 
 export default function BeautyLifestyle() {
   const { addToCart } = useCart();
@@ -15,7 +28,7 @@ export default function BeautyLifestyle() {
             Wholesale: <span className="font-medium text-black-500">KES {product.wholesale}</span>
           </p>
           <button
-            onClick={() => addToCart(product)}
+            onClick={() => addToCart(skincareItemToProduct(product))}
             className="w-full bg-black text-white p-2 rounded hover:bg-yellow-600 transition"
           >
             Add to Cart
