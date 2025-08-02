@@ -3,13 +3,11 @@
 import React from 'react';
 import Image from 'next/image';
 import { products } from '@/data/power';
+import { useCart } from '@/components/context/CartContext';
 
 export default function SolarFloodLights() {
   const floodLights = products.filter((product) => product.name.includes('Solar Flood Light'));
-
-  const handleAdd = (p: (typeof products)[number]) => {
-    console.log('Added to cart:', p.name);
-  };
+  const { addToCart } = useCart();
 
   return (
     <div className="p-6">
@@ -44,7 +42,7 @@ export default function SolarFloodLights() {
               </span>
             </p>
             <button
-              onClick={() => handleAdd(product)}
+              onClick={() => addToCart(product)}
               className="w-full bg-black text-white p-2 rounded hover:bg-yellow-600 transition"
             >
               Add to Cart

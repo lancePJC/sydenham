@@ -1,10 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { skincareItems, SkincareItem } from '@/data/skincare'; 
+import { skincareItems, SkincareItem } from '@/data/skincare';
+import { useCart } from '@/components/context/CartContext';
 
 const PyunkangYulPage: React.FC = () => {
   const pyunkangProducts = skincareItems.filter((item) => item.code.startsWith('PKY-'));
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
+  const { addToCart } = useCart();
 
   const handleNextImage = (itemId: number, totalImages: number) => {
     setCurrentImageIndices((prev) => ({
@@ -18,10 +22,6 @@ const PyunkangYulPage: React.FC = () => {
       ...prev,
       [itemId]: ((prev[itemId] || 0) - 1 + totalImages) % totalImages,
     }));
-  };
-
-  const handleAddToCart = (item: SkincareItem) => {
-    alert(`Added ${item.name} to cart!`);
   };
 
   return (
@@ -45,9 +45,6 @@ const PyunkangYulPage: React.FC = () => {
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = '/images/skincare/placeholder.jpg';
-                    }}
                   />
                   <button
                     onClick={() => handlePrevImage(item.id, item.images.length)}
@@ -78,7 +75,7 @@ const PyunkangYulPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => addToCart(item)}
                   className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart

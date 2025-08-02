@@ -1,3 +1,5 @@
+'use client';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import Link from 'next/link';
 import {
@@ -6,20 +8,24 @@ import {
   FaGlobe,
   FaTruck,
 } from 'react-icons/fa';
+import { useCart } from '@/components/context/CartContext';
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');
+  const { cart } = useCart();
+  const router = useRouter();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Searching for:', searchQuery);
+    if (searchQuery.trim()) {
+      router.push(`/search?query=${encodeURIComponent(searchQuery.trim())}`);
+    }
   };
 
   return (
     <header className="bg-black text-white px-4 py-3 flex flex-col md:flex-row md:justify-between md:items-center sticky top-0 z-10">
       {/* LEFT SECTION */}
       <div className="flex items-center gap-4 mb-3 md:mb-0">
-        {/* ── Logo ───────────────────────────── */}
         <Link
           href="/"
           className="inline-block bg-black px-3 py-1 rounded select-none leading-tight text-center"
@@ -31,8 +37,6 @@ export default function Header() {
             Sydenham&nbsp;Enterprises&nbsp;Limited
           </span>
         </Link>
-        {/* ──────────────────────────────────── */}
-
         <div className="hidden md:flex items-center gap-2 text-sm text-gray-300">
           <FaTruck className="text-yellow-400" />
           <span>Deliver to: 🇰🇪</span>
@@ -78,10 +82,10 @@ export default function Header() {
         <Link href="/Cart" className="relative flex items-center hover:text-yellow-400">
           <FaShoppingCart className="text-3xl" />
           <span className="absolute -top-2 -right-2 bg-yellow-500 text-xs text-white rounded-full px-1">
-            0
+            {cart.length}
           </span>
         </Link>
       </div>
-    </header> 
+    </header>
   );
 }

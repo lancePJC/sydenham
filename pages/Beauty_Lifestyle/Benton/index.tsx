@@ -2,11 +2,13 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { skincareItems, SkincareItem } from '@/data/skincare'; // Adjust path as needed
+import { skincareItems, SkincareItem } from '@/data/skincare';
+import { useCart } from '@/components/context/CartContext'; // <-- Import cart context
 
 const BentonPage: React.FC = () => {
   const bentonProducts = skincareItems.filter((item) => item.code.startsWith('BENTON-'));
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
+  const { addToCart } = useCart(); // <-- Use cart context
 
   const handleNextImage = (itemId: number, totalImages: number) => {
     setCurrentImageIndices((prev) => ({
@@ -20,11 +22,6 @@ const BentonPage: React.FC = () => {
       ...prev,
       [itemId]: ((prev[itemId] || 0) - 1 + totalImages) % totalImages,
     }));
-  };
-
-  const handleAddToCart = (item: SkincareItem) => {
-    alert(`Added ${item.name} to cart!`);
-    // Replace with real cart logic
   };
 
   return (
@@ -49,11 +46,7 @@ const BentonPage: React.FC = () => {
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = '/images/skincare/placeholder.jpg';
-                    }}
                   />
-                  {/* Navigation Buttons */}
                   <button
                     onClick={() => handlePrevImage(item.id, item.images.length)}
                     className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
@@ -66,7 +59,6 @@ const BentonPage: React.FC = () => {
                   >
                     &gt;
                   </button>
-                  {/* Image Indicators */}
                   <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {item.images.map((_, index) => (
                       <span
@@ -87,7 +79,7 @@ const BentonPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => addToCart(item)} // <-- Use context method
                   className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart

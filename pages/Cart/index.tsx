@@ -6,8 +6,13 @@ import Link from 'next/link';
 
 const CartPage = () => {
   const { cart, removeFromCart, clearCart } = useCart();
-
   const total = cart.reduce((sum, item) => sum + item.wholesale, 0);
+
+  const handleMpesaPay = async () => {
+    const res = await fetch('/api/mpesa', { method: 'POST', body: JSON.stringify({ total }) });
+    const data = await res.json();
+    alert(data.message || 'M-Pesa payment initiated!');
+  };
 
   return (
     <div className="px-6 py-10 bg-black text-white">
@@ -68,6 +73,12 @@ const CartPage = () => {
               >
                 Proceed to Checkout
               </Link>
+              <button
+                onClick={handleMpesaPay}
+                className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white font-semibold"
+              >
+                Pay with M-Pesa
+              </button>
             </div>
           </div>
         </>

@@ -3,10 +3,12 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { skincareItems, SkincareItem } from '@/data/skincare';
+import { useCart } from '@/components/context/CartContext';
 
 const SomeByMiPage: React.FC = () => {
   const someByMiProducts = skincareItems.filter((item) => item.code.startsWith('SBM-'));
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
+  const { addToCart } = useCart();
 
   const handleNextImage = (itemId: number, totalImages: number) => {
     setCurrentImageIndices((prev) => ({
@@ -20,10 +22,6 @@ const SomeByMiPage: React.FC = () => {
       ...prev,
       [itemId]: ((prev[itemId] || 0) - 1 + totalImages) % totalImages,
     }));
-  };
-
-  const handleAddToCart = (item: SkincareItem) => {
-    alert(`Added ${item.name} to cart!`);
   };
 
   return (
@@ -40,7 +38,6 @@ const SomeByMiPage: React.FC = () => {
                 key={item.id}
                 className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow"
               >
-                {/* Image Carousel */}
                 <div className="relative w-full h-64 mb-4">
                   <Image
                     src={item.images[currentImageIndex] || '/images/skincare/placeholder.jpg'}
@@ -48,9 +45,6 @@ const SomeByMiPage: React.FC = () => {
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = '/images/skincare/placeholder.jpg';
-                    }}
                   />
                   <button
                     onClick={() => handlePrevImage(item.id, item.images.length)}
@@ -64,7 +58,6 @@ const SomeByMiPage: React.FC = () => {
                   >
                     &gt;
                   </button>
-                  {/* Indicator Dots */}
                   <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {item.images.map((_, index) => (
                       <span
@@ -85,7 +78,7 @@ const SomeByMiPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => addToCart(item)}
                   className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart

@@ -5,13 +5,11 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { FaBolt } from 'react-icons/fa';
 import { products } from '@/data/power';
+import { useCart } from '@/components/context/CartContext';
 
 export default function ChargeController() {
   const chargeControllers = products.filter((product) => product.name.includes('MPPT Controller'));
-
-  const handleAdd = (p: (typeof products)[number]) => {
-    console.log('Added to cart:', p.name);
-  };
+  const { addToCart } = useCart();
 
   return (
     <>
@@ -51,7 +49,7 @@ export default function ChargeController() {
                     Wholesale: <span className="font-medium text-yellow-500">KES {product.wholesale}</span>
                   </p>
                   <button
-                    onClick={() => handleAdd(product)}
+                    onClick={() => addToCart(product)}
                     className="w-full bg-yellow-500 text-black p-2 rounded hover:bg-yellow-600 transition"
                   >
                     Add to Cart

@@ -1,10 +1,14 @@
+'use client';
+
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { skincareItems, SkincareItem } from  '@/data/skincare';// Adjust path as needed
+import { skincareItems, SkincareItem } from '@/data/skincare';
+import { useCart } from '@/components/context/CartContext';
 
 const PrettySkinPage: React.FC = () => {
   const prettySkinProducts = skincareItems.filter((item) => item.code.startsWith('PRETTY-'));
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
+  const { addToCart } = useCart();
 
   const handleNextImage = (itemId: number, totalImages: number) => {
     setCurrentImageIndices((prev) => ({
@@ -18,11 +22,6 @@ const PrettySkinPage: React.FC = () => {
       ...prev,
       [itemId]: ((prev[itemId] || 0) - 1 + totalImages) % totalImages,
     }));
-  };
-
-  const handleAddToCart = (item: SkincareItem) => {
-    alert(`Added ${item.name} to cart!`);
-    // Implement cart logic here (e.g., context, localStorage, or API call)
   };
 
   return (
@@ -39,7 +38,6 @@ const PrettySkinPage: React.FC = () => {
                 key={item.id}
                 className="border rounded-lg p-4 shadow-md hover:shadow-lg transition-shadow"
               >
-                {/* Carousel */}
                 <div className="relative w-full h-64 mb-4">
                   <Image
                     src={item.images[currentImageIndex] || '/images/skincare/placeholder.jpg'}
@@ -47,11 +45,7 @@ const PrettySkinPage: React.FC = () => {
                     fill
                     style={{ objectFit: 'cover' }}
                     className="rounded"
-                    onError={(e) => {
-                      e.currentTarget.src = '/images/skincare/placeholder.jpg';
-                    }}
                   />
-                  {/* Navigation Buttons */}
                   <button
                     onClick={() => handlePrevImage(item.id, item.images.length)}
                     className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full opacity-75 hover:opacity-100"
@@ -64,7 +58,6 @@ const PrettySkinPage: React.FC = () => {
                   >
                     &gt;
                   </button>
-                  {/* Image Indicators */}
                   <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
                     {item.images.map((_, index) => (
                       <span
@@ -82,7 +75,7 @@ const PrettySkinPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
-                  onClick={() => handleAddToCart(item)}
+                  onClick={() => addToCart(item)}
                   className="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
                 >
                   Add to Cart
