@@ -3,12 +3,26 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { skincareItems, SkincareItem } from '@/data/skincare';
-import { useCart } from '@/components/context/CartContext'; // <-- Import cart context
+import { useCart } from '@/components/context/CartContext';
+
+// Helper to convert SkincareItem to Product type for cart
+function skincareItemToProduct(item: SkincareItem) {
+  return {
+    id: item.id,
+    code: item.code,
+    name: item.name,
+    desc: item.desc,
+    retail: item.wholesale, // or set a real retail price if you want
+    wholesale: item.wholesale,
+    type: item.category,    // or 'skincare'
+    images: item.images,
+  };
+}
 
 const BentonPage: React.FC = () => {
   const bentonProducts = skincareItems.filter((item) => item.code.startsWith('BENTON-'));
   const [currentImageIndices, setCurrentImageIndices] = useState<{ [key: number]: number }>({});
-  const { addToCart } = useCart(); // <-- Use cart context
+  const { addToCart } = useCart();
 
   const handleNextImage = (itemId: number, totalImages: number) => {
     setCurrentImageIndices((prev) => ({
@@ -79,7 +93,7 @@ const BentonPage: React.FC = () => {
                 <p className="text-sm text-gray-500">Category: {item.category}</p>
                 <p className="text-sm text-gray-500">Code: {item.code}</p>
                 <button
-                  onClick={() => addToCart(item)} // <-- Use context method
+                  onClick={() => addToCart(skincareItemToProduct(item))}
                   className="mt-4 w-full bg-yellow-500 text-white py-2 rounded hover:bg-yellow-600 transition"
                 >
                   Add to Cart
