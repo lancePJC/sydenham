@@ -4,8 +4,8 @@ import 'slick-carousel/slick/slick-theme.css';
 import Head from 'next/head';
 import MainBranches from "@/components/Branches/MainBranches";
 import CategorySlider from '@/components/CategorySlider/CategorySlider';
-import AboutPage from '@/components/About/About';
 import SubBranches from '@/components/Branches/SubBranches';
+import AboutPage from '@/components/About/About';
 
 export default function Home() {
   return (
